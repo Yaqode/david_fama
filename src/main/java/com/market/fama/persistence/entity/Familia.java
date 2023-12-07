@@ -5,40 +5,33 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-//esta clase se compportara que mapea una tabla de la base de datos (Esta es lo mas importante)
-@Table(name = "cat_familias")
+@Table(name = "cat_familia")
 public class Familia {
 
-    @Id //esto se pone dado que es llave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_familia") //esta nos ayuda a definir el verdadero nombre
-    private Integer idfamilia;
+    @Id
+    @GeneratedValue
+    @Column(name = "id_familia")
+    private Integer idFamilia;
 
-    @Column(name = "nombre_familia") //esta nos ayuda a definir el verdadero nombre
-    private String nombrefamilia;
+    @Column(name = "nombre_familia")
+    private String nombreFamilia;
 
     @OneToMany(mappedBy = "familia")
     private List<Categoria> categorias;
 
-
-
-
-
-
-
-    public Integer getIdfamilia() {
-        return idfamilia;
+    public Integer getIdFamilia() {
+        return idFamilia;
     }
 
-    public void setIdfamilia(Integer idfamilia) {
-        this.idfamilia = idfamilia;
+    public void setIdFamilia(Integer idFamilia) {
+        this.idFamilia = idFamilia;
     }
 
-    public String getNombrefamilia() {
-        return nombrefamilia;
+    public String getNombreFamilia() {
+        return nombreFamilia;
     }
 
-    public void setNombrefamilia(String nombrefamilia) {
-        this.nombrefamilia = nombrefamilia;
+    public void setNombreFamilia(String nombreFamilia) {
+        this.nombreFamilia = nombreFamilia;
     }
 }

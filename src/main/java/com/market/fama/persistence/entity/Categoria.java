@@ -5,60 +5,36 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "cat_categorias")
-
+@Table(name = "cat_categoria")
 public class Categoria {
-
-    @Id //esto se pone dado que es llave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria") //esta nos ayuda a definir el verdadero nombre
-    private Integer idcategoria;
+    @Id
+    @GeneratedValue
+    @Column(name = "id_categoria")
+    private Integer idCategoria;
 
     @Column(name = "nombre_categoria")
-    private String nombrecategoria;
+    private String nombreCategoria;
 
     @ManyToOne
-    @JoinColumn(name = "id_familia", insertable = false, updatable = false) //atraves de esta relacion no podremos borrar editar o agregar categorias
+    @JoinColumn(name = "id_familia", insertable = false, updatable = false)
     private Familia familia;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "subcategoria")
     private List<Subcategoria> subcategorias;
 
-    public Categoria(Familia familia, List<Subcategoria> subcategorias) {
-        this.familia = familia;
-        this.subcategorias = subcategorias;
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
 
-
-    public Integer getIdcategoria() {
-        return idcategoria;
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
-    public void setIdcategoria(Integer idcategoria) {
-        this.idcategoria = idcategoria;
+    public String getNombreCategoria() {
+        return nombreCategoria;
     }
 
-    public String getNombrecategoria() {
-        return nombrecategoria;
-    }
-
-    public void setNombrecategoria(String nombrecategoria) {
-        this.nombrecategoria = nombrecategoria;
-    }
-
-    public Familia getFamilia() {
-        return familia;
-    }
-
-    public void setFamilia(Familia familia) {
-        this.familia = familia;
-    }
-
-    public List<Subcategoria> getSubcategorias() {
-        return subcategorias;
-    }
-
-    public void setSubcategorias(List<Subcategoria> subcategorias) {
-        this.subcategorias = subcategorias;
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
     }
 }

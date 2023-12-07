@@ -2,100 +2,36 @@ package com.market.fama.persistence.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
-@Table(name = "tbl_productos")
+@Table(name = "tbl_producto")
 public class Producto {
-    @Id //esto se pone dado que es llave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_producto") //esta nos ayuda a definir el verdadero nombre
-    private Integer idproducto;
+
+    @Id
+    @GeneratedValue
+    @Column(name = "id_producto")
+    private Integer idProducto;
 
     @Column(name = "nombre_producto")
-    private String nombreproducto;
+    private String nombreProducto;
 
     @Column(name = "descripcion_producto")
-    private String descripcionproducto;
+    private String descripcionProducto;
 
     @Column(name = "precio_producto")
-    private Double precioproducto;
+    private Double precioProducto;
 
     @Column(name = "precio_descuento_producto")
-    private Double preciodescuentoproducto;
+    private Double precioDescuentoProducto;
 
     @Column(name = "codigo_barras_producto")
-    private String codigobarrasproducto;
+    private String codigoBarrasProducto;
 
     @Column(name = "codigo_interno_producto")
-    private String codigointernoproducto;
+    private String codigoInternoProducto;
 
     @Column(name = "cantidad_producto")
-    private Integer cantidadproducto;
-
-
-
-
-    @OneToMany(mappedBy = "producto")
-    private List<EspecificacionProducto> especificacionProductos;
-
-    @OneToMany(mappedBy = "producto")
-    private  List<Imagen> imagens;
-
-    @OneToMany(mappedBy = "producto")
-    private  List<Inventario>inventarios;
-
-    @OneToMany(mappedBy = "producto")
-    private  List<PedidoProducto>pedidoProductos;
-
-
-    public List<EspecificacionProducto> getEspecificacionProductos() {
-        return especificacionProductos;
-    }
-
-    public void setEspecificacionProductos(List<EspecificacionProducto> especificacionProductos) {
-        this.especificacionProductos = especificacionProductos;
-    }
-
-    public List<Imagen> getImagens() {
-        return imagens;
-    }
-
-    public void setImagens(List<Imagen> imagens) {
-        this.imagens = imagens;
-    }
-
-    public List<Inventario> getInventarios() {
-        return inventarios;
-    }
-
-    public void setInventarios(List<Inventario> inventarios) {
-        this.inventarios = inventarios;
-    }
-
-    public List<PedidoProducto> getPedidoProductos() {
-        return pedidoProductos;
-    }
-
-    public void setPedidoProductos(List<PedidoProducto> pedidoProductos) {
-        this.pedidoProductos = pedidoProductos;
-    }
-
-    public Subcategoria getSubcategoria() {
-        return subcategoria;
-    }
-
-    public void setSubcategoria(Subcategoria subcategoria) {
-        this.subcategoria = subcategoria;
-    }
-
-    public Submarca getSubmarca() {
-        return submarca;
-    }
-
-    public void setSubmarca(Submarca submarca) {
-        this.submarca = submarca;
-    }
+    private Integer cantidadProducto;
 
     @ManyToOne
     @JoinColumn(name = "id_subcategoria", insertable = false, updatable = false)
@@ -105,70 +41,68 @@ public class Producto {
     @JoinColumn(name = "id_submarca", insertable = false, updatable = false)
     private Submarca submarca;
 
-
-
-
-
-
-    public Integer getIdproducto() { return idproducto; }
-
-    public void setIdproducto(Integer idproducto) {
-        this.idproducto = idproducto;
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public String getNombreproducto() {
-        return nombreproducto;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
-    public void setNombreproducto(String nombreproducto) {
-        this.nombreproducto = nombreproducto;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public String getDescripcionproducto() {
-        return descripcionproducto;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
-    public void setDescripcionproducto(String descripcionproducto) {
-        this.descripcionproducto = descripcionproducto;
+    public String getDescripcionProducto() {
+        return descripcionProducto;
     }
 
-    public Double getPrecioproducto() {
-        return precioproducto;
+    public void setDescripcionProducto(String descripcionProducto) {
+        this.descripcionProducto = descripcionProducto;
     }
 
-    public void setPrecioproducto(Double precioproducto) {
-        this.precioproducto = precioproducto;
+    public Double getPrecioProducto() {
+        return precioProducto;
     }
 
-    public Double getPreciodescuentoproducto() {
-        return preciodescuentoproducto;
+    public void setPrecioProducto(Double precioProducto) {
+        this.precioProducto = precioProducto;
     }
 
-    public void setPreciodescuentoproducto(Double preciodescuentoproducto) {
-        this.preciodescuentoproducto = preciodescuentoproducto;
+    public Double getPrecioDescuentoProducto() {
+        return precioDescuentoProducto;
     }
 
-    public String getCodigobarrasproducto() {
-        return codigobarrasproducto;
+    public void setPrecioDescuentoProducto(Double precioDescuentoProducto) {
+        this.precioDescuentoProducto = precioDescuentoProducto;
     }
 
-    public void setCodigobarrasproducto(String codigobarrasproducto) {
-        this.codigobarrasproducto = codigobarrasproducto;
+    public String getCodigoBarrasProducto() {
+        return codigoBarrasProducto;
     }
 
-    public String getCodigointernoproducto() {
-        return codigointernoproducto;
+    public void setCodigoBarrasProducto(String codigoBarrasProducto) {
+        this.codigoBarrasProducto = codigoBarrasProducto;
     }
 
-    public void setCodigointernoproducto(String codigointernoproducto) {
-        this.codigointernoproducto = codigointernoproducto;
+    public String getCodigoInternoProducto() {
+        return codigoInternoProducto;
     }
 
-    public Integer getCantidadproducto() {
-        return cantidadproducto;
+    public void setCodigoInternoProducto(String codigoInternoProducto) {
+        this.codigoInternoProducto = codigoInternoProducto;
     }
 
-    public void setCantidadproducto(Integer cantidadproducto) {
-        this.cantidadproducto = cantidadproducto;
+    public Integer getCantidadProducto() {
+        return cantidadProducto;
     }
+
+    public void setCantidadProducto(Integer cantidadProducto) {
+        this.cantidadProducto = cantidadProducto;
+    }
+
 }

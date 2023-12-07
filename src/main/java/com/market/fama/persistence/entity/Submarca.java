@@ -1,68 +1,53 @@
 package com.market.fama.persistence.entity;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table(name = "cat_submarcas")
+@Table(name = "cat_submarca")
 public class Submarca {
-
-    @Id //esto se pone dado que es llave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_submarca") //esta nos ayuda a definir el verdadero nombre
-    private Integer idsubmarca;
+    @Id
+    @GeneratedValue
+    @Column(name = "id_submarca")
+    private Integer idSubmarca;
 
     @Column(name = "nombre_submarca")
-    private String nombremarca;
+    private String nombreSubmarca;
 
     @Column(name = "ruta_imagen")
-    private String rutaimagen;
+    private String ruta_imagen;
 
-
-    @ManyToOne //muchos a uno
-    @JoinColumn(name = "id_marca", insertable = false, updatable = false) //atravez de esta relacion no se podra hacer nada en la tabla marca, solo recuperamos datos
+    @ManyToOne
+    @JoinColumn(name = "id_marca", insertable = false, updatable = false)
     private Marca marca;
 
     @OneToMany(mappedBy = "submarca")
     private List<Producto> productos;
 
-
-    public Marca getMarca() {
-        return marca;
+    public Integer getIdSubmarca() {
+        return idSubmarca;
     }
 
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+    public void setIdSubmarca(Integer idSubmarca) {
+        this.idSubmarca = idSubmarca;
     }
 
-    public List<Producto> getProductos() {
-        return productos;
+    public String getNombreSubmarca() {
+        return nombreSubmarca;
     }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
+    public void setNombreSubmarca(String nombreSubmarca) {
+        this.nombreSubmarca = nombreSubmarca;
     }
 
-    public Integer getIdsubmarca() {
-        return idsubmarca;
+    public String getRuta_imagen() {
+        return ruta_imagen;
     }
 
-    public void setIdsubmarca(Integer idsubmarca) {
-        this.idsubmarca = idsubmarca;
+    public void setRuta_imagen(String ruta_imagen) {
+        this.ruta_imagen = ruta_imagen;
     }
 
-    public String getNombremarca() {
-        return nombremarca;
-    }
-
-    public void setNombremarca(String nombremarca) {
-        this.nombremarca = nombremarca;
-    }
-
-    public String getRutaimagen() {return rutaimagen;}
-
-    public void setRutaimagen(String rutaimagen) {
-        this.rutaimagen = rutaimagen;
-    }
 }

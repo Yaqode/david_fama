@@ -6,7 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ProductoCrudRepository extends CrudRepository<Producto, Integer> {
-    List<Producto> findByIdproducto(int idProducto);
-    List<Producto> findByIdSubcategoria(int idSubcategoria);
-    List<Producto> findByIdSubmarca(int idSubmarca);
+    //List<Producto> findBySubcategoria(int idSubcategoria);
+
+    //List<Producto> findBySubmarca(int idSubmarca);
+
 }

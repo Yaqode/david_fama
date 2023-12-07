@@ -5,53 +5,43 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "cat_marcas")
+@Table(name = "cat_marca")
 public class Marca {
-    @Id //esto se pone dado que es llave primaria
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_marca") //esta nos ayuda a definir el verdadero nombre
-    private Integer idmarca;
+    @Id
+    @GeneratedValue
+    @Column(name = "id_marca")
+    private Integer idMarca;
 
     @Column(name = "nombre_marca")
-    private String nombremarca;
+    private String nombreMarca;
 
     @Column(name = "ruta_imagen")
-    private String rutaimagen;
-
+    private String rutaImagen;
 
     @OneToMany(mappedBy = "marca")
     private List<Submarca> submarcas;
 
-
-    public Integer getIdmarca() {
-        return idmarca;
+    public Integer getIdMarca() {
+        return idMarca;
     }
 
-    public void setIdmarca(Integer idmarca) {
-        this.idmarca = idmarca;
+    public void setIdMarca(Integer idMarca) {
+        this.idMarca = idMarca;
     }
 
-    public String getNombremarca() {
-        return nombremarca;
+    public String getNombreMarca() {
+        return nombreMarca;
     }
 
-    public void setNombremarca(String nombremarca) {
-        this.nombremarca = nombremarca;
+    public void setNombreMarca(String nombreMarca) {
+        this.nombreMarca = nombreMarca;
     }
 
-    public String getRutaimagen() {
-        return rutaimagen;
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
-    public void setRutaimagen(String rutaimagen) {
-        this.rutaimagen = rutaimagen;
-    }
-
-    public List<Submarca> getSubmarcas() {
-        return submarcas;
-    }
-
-    public void setSubmarcas(List<Submarca> submarcas) {
-        this.submarcas = submarcas;
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }
