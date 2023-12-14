@@ -33,9 +33,15 @@ public class Producto {
     @Column(name = "cantidad_producto")
     private Integer cantidadProducto;
 
+    @Column(name = "id_subcategoria")
+    private Integer idSubcategoria;
+
     @ManyToOne
     @JoinColumn(name = "id_subcategoria", insertable = false, updatable = false)
     private Subcategoria subcategoria;
+
+    @Column(name = "id_submarca")
+    private Integer idSubmarca;
 
     @ManyToOne
     @JoinColumn(name = "id_submarca", insertable = false, updatable = false)
@@ -105,4 +111,35 @@ public class Producto {
         this.cantidadProducto = cantidadProducto;
     }
 
+    public Integer getIdSubcategoria() {
+        return idSubcategoria;
+    }
+
+    public void setIdSubcategoria(Integer idSubcategoria) {
+        this.idSubcategoria = idSubcategoria;
+    }
+
+    public Integer getIdSubmarca() {
+        return idSubmarca;
+    }
+
+    public void setIdSubmarca(Integer idSubmarca) {
+        this.idSubmarca = idSubmarca;
+    }
+
+    public Subcategoria getSubcategoria() {
+        return subcategoria;
+    }
+
+    public void setSubcategoria(Subcategoria subcategoria) {
+        this.subcategoria = subcategoria;
+    }
+
+    public Submarca getSubmarca() {
+        return submarca;
+    }
+
+    public void setSubmarca(Submarca submarca) {
+        this.submarca = submarca;
+    }
 }

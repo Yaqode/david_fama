@@ -17,7 +17,10 @@ public class Submarca {
     private String nombreSubmarca;
 
     @Column(name = "ruta_imagen")
-    private String ruta_imagen;
+    private String rutaImagen;
+
+    @Column(name = "id_marca")
+    private int idMarca;
 
     @ManyToOne
     @JoinColumn(name = "id_marca", insertable = false, updatable = false)
@@ -42,12 +45,35 @@ public class Submarca {
         this.nombreSubmarca = nombreSubmarca;
     }
 
-    public String getRuta_imagen() {
-        return ruta_imagen;
+    public String getRutaImagen() {
+        return rutaImagen;
     }
 
-    public void setRuta_imagen(String ruta_imagen) {
-        this.ruta_imagen = ruta_imagen;
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 
+    public int getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(int idMarca) {
+        this.idMarca = idMarca;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
 }

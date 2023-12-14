@@ -1,24 +1,38 @@
 package com.market.fama.persistence;
 
+import com.market.fama.domain.Category;
+import com.market.fama.domain.repository.CategoryRepository;
 import com.market.fama.persistence.crud.CategoriaCrudRepository;
 import com.market.fama.persistence.entity.Categoria;
-import com.market.fama.persistence.entity.Producto;
+import com.market.fama.persistence.mapper.CategoryMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class CategoriaRepository {
+public class CategoriaRepository implements CategoryRepository {
+    @Autowired
     private CategoriaCrudRepository categoriaCrudRepository;
+    @Autowired
+    private CategoryMapper mapper;
 
-    public List<Categoria> getAll(){
-        return (List<Categoria>) categoriaCrudRepository.findAll();
+    public List<Category> getAll(){
+        List<Categoria> categorias = (List<Categoria>) categoriaCrudRepository.findAll();
+        return mapper.toCategories(categorias);
     }
 
-    public Optional<Categoria> getCategoria(int idCategoria) { return categoriaCrudRepository.findById(idCategoria); }
+    public Optional<Category> getCategory(int categoryId) {
+        return categoriaCrudRepository.findById(categoryId).map(categoria -> mapper.toCategory(categoria));
+    }
 
-    public Categoria save(Categoria categoria) { return  categoriaCrudRepository.save(categoria); }
+    public Category save(Category category) {
+        Categoria categoria = mapper.toCategoria(category);
+        return mapper.toCategory(categoriaCrudRepository.save(categoria));
+    }
 
-    public void delete(int idCategoria) { categoriaCrudRepository.deleteById(idCategoria); }
+    public void delete(int categoryId) {
+        categoriaCrudRepository.deleteById(categoryId);
+    }
 }

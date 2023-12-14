@@ -44,4 +44,12 @@ public class Marca {
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
     }
+
+    public List<Submarca> getSubmarcas() {
+        return submarcas;
+    }
+
+    public void setSubmarcas(List<Submarca> submarcas) {
+        this.submarcas = submarcas;
+    }
 }

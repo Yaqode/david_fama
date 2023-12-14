@@ -1,22 +1,41 @@
 package com.market.fama.persistence;
 
+import com.market.fama.domain.Brand;
+import com.market.fama.domain.Category;
+import com.market.fama.domain.repository.BrandRepository;
+import com.market.fama.domain.repository.CategoryRepository;
+import com.market.fama.persistence.crud.CategoriaCrudRepository;
 import com.market.fama.persistence.crud.MarcaCrudRepository;
+import com.market.fama.persistence.entity.Categoria;
 import com.market.fama.persistence.entity.Marca;
 import com.market.fama.persistence.entity.Marca;
+import com.market.fama.persistence.mapper.BrandMapper;
+import com.market.fama.persistence.mapper.CategoryMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class MarcaRepository {
+@Repository
+public class MarcaRepository implements BrandRepository {
+    @Autowired
     private MarcaCrudRepository marcaCrudRepository;
+    @Autowired
+    private BrandMapper mapper;
 
-    public List<Marca> getAll(){
-        return (List<Marca>) marcaCrudRepository.findAll();
+    public List<Brand> getAll(){
+        List<Marca> marcas = (List<Marca>) marcaCrudRepository.findAll();
+        return mapper.toBrands(marcas);
     }
-    
-    public Optional<Marca> getCategoria(int idMarca) { return marcaCrudRepository.findById(idMarca); }
 
-    public Marca save(Marca categoria) { return  marcaCrudRepository.save(categoria); }
+    public Optional<Brand> getBrand(int categoryId) {
+        return marcaCrudRepository.findById(categoryId).map(categoria -> mapper.toBrand(categoria));
+    }
 
-    public void delete(int idMarca) { marcaCrudRepository.deleteById(idMarca); }
+    public Brand save(Brand brand) {
+        Marca marca = mapper.toMarca(brand);
+        return mapper.toBrand(marcaCrudRepository.save(marca));
+    }
+    public void delete(int brandId) { marcaCrudRepository.deleteById(brandId); }
 }

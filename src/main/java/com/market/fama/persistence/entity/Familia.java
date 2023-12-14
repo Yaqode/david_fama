@@ -34,4 +34,12 @@ public class Familia {
     public void setNombreFamilia(String nombreFamilia) {
         this.nombreFamilia = nombreFamilia;
     }
+
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
 }
