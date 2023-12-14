@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {SubcategoryMapper.class, SubbrandMapper.class})
 public interface ProductMapper {
     @Mappings({
             @Mapping(source = "idProducto", target = "productId"),
@@ -24,7 +24,7 @@ public interface ProductMapper {
             @Mapping(source = "idSubcategoria", target = "subcategoryId"),
             @Mapping(source = "subcategoria", target = "subcategory"),
             @Mapping(source = "idSubmarca", target = "subbrandId"),
-            @Mapping(source = "submarca", target = "subbrand")
+            @Mapping(source = "submarca", target = "subbrand"),
     })
     Product toProduct(Producto producto);
     List<Product> toProducts(List<Producto> productos);

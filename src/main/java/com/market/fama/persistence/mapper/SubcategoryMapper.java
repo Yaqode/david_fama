@@ -9,13 +9,13 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class})
 public interface SubcategoryMapper {
     @Mappings({
             @Mapping(source = "idSubcategoria", target = "subCategoryId"),
             @Mapping(source = "nombreSubcategoria", target = "nameSubCategory"),
             @Mapping(source = "idCategoria", target = "categoryId"),
-            @Mapping(source = "categoria", target = "category")
+            @Mapping(source = "categoria", target = "category"),
     })
     Subcategory toSubcategory(Subcategoria subcategoria);
     List<Subcategory> toSubcategories(List<Subcategoria> subcategorias);

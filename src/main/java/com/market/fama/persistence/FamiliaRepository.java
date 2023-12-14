@@ -21,21 +21,23 @@ public class FamiliaRepository implements FamilyRepository {
     @Autowired
     private FamilyMapper mapper;
 
+    @Override
     public List<Family> getAll(){
         List<Familia> categorias = (List<Familia>) familiaCrudRepository.findAll();
         return mapper.toFamilies(categorias);
     }
 
+    @Override
     public Optional<Family> getFamily(int familyId) {
         return familiaCrudRepository.findById(familyId).map(familia -> mapper.toFamily(familia));
     }
 
-    public Familia save(Familia categoria) { return  familiaCrudRepository.save(categoria); }
-
+    @Override
     public Family save(Family family) {
         Familia familia = mapper.toFamilia(family);
         return mapper.toFamily(familiaCrudRepository.save(familia));
     }
 
+    @Override
     public void delete(int familyId) { familiaCrudRepository.deleteById(familyId); }
 }

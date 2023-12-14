@@ -24,18 +24,23 @@ public class MarcaRepository implements BrandRepository {
     @Autowired
     private BrandMapper mapper;
 
+    @Override
     public List<Brand> getAll(){
         List<Marca> marcas = (List<Marca>) marcaCrudRepository.findAll();
         return mapper.toBrands(marcas);
     }
 
+    @Override
     public Optional<Brand> getBrand(int categoryId) {
         return marcaCrudRepository.findById(categoryId).map(categoria -> mapper.toBrand(categoria));
     }
 
+    @Override
     public Brand save(Brand brand) {
         Marca marca = mapper.toMarca(brand);
         return mapper.toBrand(marcaCrudRepository.save(marca));
     }
+
+    @Override
     public void delete(int brandId) { marcaCrudRepository.deleteById(brandId); }
 }

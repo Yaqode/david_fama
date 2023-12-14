@@ -19,19 +19,23 @@ public class SubmarcaRepository implements SubbrandRepository {
     @Autowired
     private SubbrandMapper mapper;
 
+    @Override
     public List<Subbrand> getAll(){
         List<Submarca> subcategorias = (List<Submarca>) submarcaCrudRepository.findAll();
         return mapper.toSubbrands(subcategorias);
     }
 
+    @Override
     public Optional<Subbrand> getSubbrand(int subbrandId) {
         return submarcaCrudRepository.findById(subbrandId).map(submarca -> mapper.toSubbrand(submarca));
     }
 
+    @Override
     public Subbrand save(Subbrand subbrand) {
         Submarca subcategoria = mapper.toSubmarca(subbrand);
         return mapper.toSubbrand(submarcaCrudRepository.save(subcategoria));
     }
 
+    @Override
     public void delete(int idSubmarca) { submarcaCrudRepository.deleteById(idSubmarca); }
 }

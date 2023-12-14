@@ -15,14 +15,14 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {BrandMapper.class})
 public interface SubbrandMapper {
     @Mappings({
             @Mapping(source = "idSubmarca", target = "subBrandId"),
             @Mapping(source = "nombreSubmarca", target = "nameSubBrand"),
             @Mapping(source = "rutaImagen", target = "linkImageSubbrand"),
             @Mapping(source = "idMarca", target = "brandId"),
-            @Mapping(source = "marca", target = "brand")
+            @Mapping(source = "marca", target = "brand"),
     })
     Subbrand toSubbrand(Submarca submarca);
     List<Subbrand> toSubbrands(List<Submarca> submarcas);

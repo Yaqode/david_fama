@@ -18,19 +18,23 @@ public class ProductoRepository implements ProductRepository {
     @Autowired
     private ProductMapper mapper;
 
+    @Override
     public List<Product> getAll(){
         List<Producto> subcategorias = (List<Producto>) productoCrudRepository.findAll();
         return mapper.toProducts(subcategorias);
     }
 
+    @Override
     public Optional<Product> getProduct(int productId) {
         return productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto));
     }
 
+    @Override
     public Product save(Product product) {
         Producto producto = mapper.toProducto(product);
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
+    @Override
     public void delete(int productId) { productoCrudRepository.deleteById(productId); }
 }

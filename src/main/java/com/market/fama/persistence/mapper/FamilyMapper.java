@@ -15,7 +15,7 @@ import java.util.List;
 public interface FamilyMapper {
     @Mappings({
             @Mapping(source = "idFamilia", target = "familyId"),
-            @Mapping(source = "nombreFamilia", target = "nameFamily")
+            @Mapping(source = "nombreFamilia", target = "nameFamily"),
     })
     Family toFamily(Familia familia);
     List<Family> toFamilies(List<Familia> familias);
