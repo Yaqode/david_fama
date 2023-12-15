@@ -9,7 +9,7 @@ import java.util.List;
 public class Familia {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_familia")
     private Integer idFamilia;
 

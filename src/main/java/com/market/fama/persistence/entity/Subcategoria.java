@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "cat_subcategoria")
 public class Subcategoria {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_subcategoria")
     private Integer idSubcategoria;
 
