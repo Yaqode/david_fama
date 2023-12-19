@@ -16,7 +16,7 @@ public class Categoria {
     private String nombreCategoria;
 
     @Column(name = "id_familia")
-    private int idFamilia;
+    private Integer idFamilia;
 
     @ManyToOne
     @JoinColumn(name = "id_familia", insertable = false, updatable = false)
