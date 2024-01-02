@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,21 +20,32 @@ public class BrandService {
 
     public List<Brand> getAll() {
         List<Brand> listBrand = brandRepository.getAll();
-        List<Brand> listBrandImg = null;
+        List<Brand> listBrandImg = new ArrayList<>();;
         listBrand.forEach(brand -> {
             try {
-                brand.setLinkImageBrand(utilService.leerImagenComoBase64("/marcas/" + brand.getLinkImageBrand()));
+                brand.setLinkImageBrand(utilService.leerImagenComoBase64("\\img\\marcas\\" + brand.getLinkImageBrand()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
             listBrandImg.add(brand);
         });
 
-        return brandRepository.getAll();
+        return listBrandImg;
     }
 
     public Optional<Brand> getBrand(int brandId) {
-        return brandRepository.getBrand(brandId);
+        Optional<Brand> optionalBrand = brandRepository.getBrand(brandId);
+
+        optionalBrand.ifPresent(brand -> {
+            // Modificar el componente del objeto Brand, por ejemplo:
+            try {
+                brand.setLinkImageBrand(utilService.leerImagenComoBase64("\\img\\marcas\\" + brand.getLinkImageBrand()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        return optionalBrand;
     }
 
     public Brand save(Brand brand) {
