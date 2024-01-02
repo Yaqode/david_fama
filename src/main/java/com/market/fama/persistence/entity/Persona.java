@@ -24,8 +24,8 @@ public class Persona {
     @Column(name = "telefonoPersona")
     private Integer telefonoPersona;
 
-    @OneToOne(mappedBy = "rol")
-    private List<Usuario> usuario;
+    /*@OneToOne(mappedBy = "rol")
+    private List<Usuario> usuario;*/
 
     public Integer getIdPersona() {
         return idPersona;
@@ -67,11 +67,11 @@ public class Persona {
         this.telefonoPersona = telefonoPersona;
     }
 
-    public List<Usuario> getUsuario() {
+    /*public List<Usuario> getUsuario() {
         return usuario;
     }
 
     public void setUsuario(List<Usuario> usuario) {
         this.usuario = usuario;
-    }
+    }*/
 }

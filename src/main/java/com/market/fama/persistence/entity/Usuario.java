@@ -31,12 +31,12 @@ public class Usuario {
     @JoinColumn(name = "id_rol", insertable = false, updatable = false)
     private Rol rol;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "id_persona", insertable = false, updatable = false)
     private Persona persona;
 
     @OneToMany(mappedBy = "usuarios")
-    private List<Direccion> direcciones;
+    private List<Direccion> direcciones;*/
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -94,7 +94,7 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Persona getPersona() {
+    /*public Persona getPersona() {
         return persona;
     }
 
@@ -108,5 +108,5 @@ public class Usuario {
 
     public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
-    }
+    }*/
 }

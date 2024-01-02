@@ -37,9 +37,9 @@ public class Direccion {
     @JoinColumn(name = "id_colonia", insertable = false, updatable = false)
     private Colonia colonias;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
-    private List<Usuario> usuarios;
+    //@ManyToOne
+    //@JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    //private List<Usuario> usuarios;
 
     public Integer getIdDireccion() {
         return idDireccion;
@@ -113,11 +113,11 @@ public class Direccion {
         this.colonias = colonias;
     }
 
-    public List<Usuario> getUsuarios() {
+    /*public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
-    }
+    }*/
 }
