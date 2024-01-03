@@ -27,7 +27,7 @@ public class ImageController {
     }
 
     @PostMapping("/save/product")
-    public Image save(@RequestBody Image image) throws IOException {
+    public List<Image> save(@RequestBody List<Image> image) throws IOException {
         return ImageService.save(image);
     }
 

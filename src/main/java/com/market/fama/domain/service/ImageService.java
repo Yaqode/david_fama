@@ -54,26 +54,36 @@ public class ImageService {
         return optionalImage;
     }
 
-    public Image save(Image image) throws IOException {
-        //Crear carpeta de la imagen
-        String nameCarpeta = utilService.crearCarpeta(image.getOrdenNo().toString());
+    public List<Image> save(List<Image> images) throws IOException {
 
-        //Contar imagenes asociados al producto
-        long cantidad = getCountByProduct(image.getProductId());
+        List<Image> imagesSave = new ArrayList<>();
 
-        //Sumamos el numero siguiente
-        cantidad++;
+        images.forEach(image -> {
+            //Crear carpeta de la imagen
+            String nameCarpeta = utilService.crearCarpeta(image.getOrdenNo().toString());
 
-        //Definir el nombre con ruta
-        String urlImage = "\\" + nameCarpeta + "\\" + nameCarpeta + "_" + cantidad + ".jpg";
+            //Contar imagenes asociados al producto
+            long cantidad = getCountByProduct(image.getProductId());
 
-        //Crear la imagen
-        utilService.guardarImagenComoBase64(image, urlImage);
+            //Sumamos el numero siguiente
+            cantidad++;
 
-        //Cambiamos el Base64 por la ruta
-        image.setImageRoute(urlImage);
+            //Definir el nombre con ruta
+            String urlImage = "\\" + nameCarpeta + "\\" + nameCarpeta + "_" + cantidad + ".jpg";
 
-        return ImageRepository.save(image);
+            //Crear la imagen
+            try {
+                utilService.guardarImagenComoBase64(image, urlImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //Cambiamos el Base64 por la ruta
+            image.setImageRoute(urlImage);
+
+            imagesSave.add(ImageRepository.save(image));
+        });
+        return imagesSave;
     }
 
     public boolean delete(int ImageId) {
