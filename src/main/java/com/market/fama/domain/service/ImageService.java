@@ -34,6 +34,10 @@ public class ImageService {
         return listImageImg;
     }
 
+    public long getCountByProduct(int idProduct) {
+        return ImageRepository.getCountByProduct(idProduct);
+    }
+
     public Optional<Image> getImage(int ImageId) {
         Optional<Image> optionalImage = ImageRepository.getImage(ImageId);
 
@@ -50,11 +54,24 @@ public class ImageService {
         return optionalImage;
     }
 
-    public Image save(Image image) {
+    public Image save(Image image) throws IOException {
         //Crear carpeta de la imagen
-        utilService.crearCarpeta(image.getOrdenNo().toString());
-        //Crear la imagen
+        String nameCarpeta = utilService.crearCarpeta(image.getOrdenNo().toString());
 
+        //Contar imagenes asociados al producto
+        long cantidad = getCountByProduct(image.getProductId());
+
+        //Sumamos el numero siguiente
+        cantidad++;
+
+        //Definir el nombre con ruta
+        String urlImage = "\\" + nameCarpeta + "\\" + nameCarpeta + "_" + cantidad + ".jpg";
+
+        //Crear la imagen
+        utilService.guardarImagenComoBase64(image, urlImage);
+
+        //Cambiamos el Base64 por la ruta
+        image.setImageRoute(urlImage);
 
         return ImageRepository.save(image);
     }

@@ -5,6 +5,7 @@ import com.market.fama.domain.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,7 @@ public class ImageController {
     }
 
     @PostMapping("/save/product")
-    public Image save(@RequestBody Image image) {
+    public Image save(@RequestBody Image image) throws IOException {
         return ImageService.save(image);
     }
 

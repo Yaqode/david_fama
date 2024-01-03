@@ -24,9 +24,13 @@ public class UtilService {
         return null;
     }
 
-    public static void guardarImagenComoBase64(String base64Image, String rutaGuardar) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(obtenerRutaBaseDelProyecto() + rutaGuardar)))) {
-            writer.write(base64Image);
+    public static void guardarImagenComoBase64(Image image, String urlImage) throws IOException {
+                String rutaCompleta = obtenerRutaBaseDelProyecto() + "\\img\\productos" + urlImage;
+
+        try (FileOutputStream fos = new FileOutputStream(new File(rutaCompleta))) {
+            String imagenBase64 = image.getImageRoute();
+            byte[] imagenBytes = Base64.getDecoder().decode(imagenBase64);
+            fos.write(imagenBytes);
         }
     }
 

@@ -26,6 +26,11 @@ public class ImagenRepository implements ImageRepository {
     }
 
     @Override
+    public long getCountByProduct(int idProduct){
+        return imagenCrudRepository.countByIdProducto(idProduct);
+    }
+
+    @Override
     public Optional<Image> getImage(int imageId) {
         return imagenCrudRepository.findById(imageId).map(imagen -> mapper.toImage(imagen));
     }
