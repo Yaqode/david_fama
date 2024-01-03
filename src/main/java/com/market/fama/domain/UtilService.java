@@ -35,4 +35,22 @@ public class UtilService {
         return currentRelativePath.toAbsolutePath().toString();
     }
 
+    public static String crearCarpeta(String nombreCarpeta) {
+        // Crear un objeto File que represente la carpeta
+        File carpeta = new File(obtenerRutaBaseDelProyecto() + "\\img\\productos\\" + nombreCarpeta);
+
+        // Verificar si la carpeta no existe y luego intentar crearla
+        if (!carpeta.exists()) {
+            if (carpeta.mkdirs()) {
+                return nombreCarpeta;
+            } else {
+                System.err.println("No se pudo crear la carpeta.");
+                return "Error";
+            }
+        } else {
+            System.out.println("La carpeta ya existe.");
+            return nombreCarpeta;
+        }
+    }
+
 }

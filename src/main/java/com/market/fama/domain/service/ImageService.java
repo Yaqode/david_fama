@@ -50,8 +50,13 @@ public class ImageService {
         return optionalImage;
     }
 
-    public Image save(Image Image) {
-        return ImageRepository.save(Image);
+    public Image save(Image image) {
+        //Crear carpeta de la imagen
+        utilService.crearCarpeta(image.getOrdenNo().toString());
+        //Crear la imagen
+
+
+        return ImageRepository.save(image);
     }
 
     public boolean delete(int ImageId) {

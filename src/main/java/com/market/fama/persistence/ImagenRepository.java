@@ -22,7 +22,7 @@ public class ImagenRepository implements ImageRepository {
     @Override
     public List<Image> getAll(){
         List<Imagen> imagenes = (List<Imagen>) imagenCrudRepository.findAll();
-        return mapper.toImage(imagenes);
+        return mapper.toImages(imagenes);
     }
 
     @Override

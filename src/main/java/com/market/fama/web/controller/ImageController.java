@@ -25,7 +25,7 @@ public class ImageController {
         return ImageService.getImage(imageId);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/save/product")
     public Image save(@RequestBody Image image) {
         return ImageService.save(image);
     }

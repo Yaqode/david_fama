@@ -21,12 +21,10 @@ public interface ImageMapper {
             @Mapping(source = "rutaImagen", target = "imageRoute"),
             @Mapping(source = "idProducto", target = "productId"),
             @Mapping(source = "noOrden", target = "ordenNo"),
-            @Mapping(source = "imagenes", target = "imagens"),
     })
     Image toImage(Imagen imagen);
-    List<Image> toImage(List<Imagen> imagenes);
+    List<Image> toImages(List<Imagen> imagenes);
 
     @InheritInverseConfiguration
-    @Mapping(target = "imagenes", ignore = true)
     Imagen toImagen(Image image);
 }

@@ -26,6 +26,7 @@ public interface ProductMapper {
             @Mapping(source = "idSubmarca", target = "subbrandId"),
             @Mapping(source = "submarca", target = "subbrand"),
             @Mapping(source = "unidadMedida", target = "unitMeasurement"),
+            @Mapping(source = "imagenes", target = "imagens"),
     })
     Product toProduct(Producto producto);
     List<Product> toProducts(List<Producto> productos);

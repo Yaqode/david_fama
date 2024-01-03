@@ -10,8 +10,6 @@ public class Image {
 
     private Integer ordenNo;
 
-    private Image imagens;
-
     public Integer getImageId() {
         return imageId;
     }
@@ -44,11 +42,4 @@ public class Image {
         this.ordenNo = ordenNo;
     }
 
-    public Image getImagens() {
-        return imagens;
-    }
-
-    public void setImagens(Image imagens) {
-        this.imagens = imagens;
-    }
 }

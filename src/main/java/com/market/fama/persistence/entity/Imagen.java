@@ -2,6 +2,8 @@ package com.market.fama.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tbl_imagen")
 public class Imagen {
@@ -21,7 +23,7 @@ public class Imagen {
 
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
-    private Imagen imagenes;
+    private Producto productos;
 
     public Integer getIdImagen() {
         return idImagen;
@@ -55,11 +57,11 @@ public class Imagen {
         this.noOrden = noOrden;
     }
 
-    public Imagen getImagenes() {
-        return imagenes;
+    public Producto getProducto() {
+        return productos;
     }
 
-    public void setImagenes(Imagen imagenes) {
-        this.imagenes = imagenes;
+    public void setProducto(Producto producto) {
+        this.productos = producto;
     }
 }

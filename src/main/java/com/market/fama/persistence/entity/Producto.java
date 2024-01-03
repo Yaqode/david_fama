@@ -49,11 +49,11 @@ public class Producto {
     @JoinColumn(name = "id_submarca", insertable = false, updatable = false)
     private Submarca submarca;
 
-    @OneToMany(mappedBy = "imagenes")
+    @OneToMany(mappedBy = "productos")
     private List<Imagen> imagenes;
 
     @Column(name = "unidad_medida")
-    private Integer unidadMedida;
+    private String unidadMedida;
 
     public Integer getIdProducto() {
         return idProducto;
@@ -159,11 +159,11 @@ public class Producto {
         this.imagenes = imagenes;
     }
 
-    public Integer getUnidadMedida() {
+    public String getUnidadMedida() {
         return unidadMedida;
     }
 
-    public void setUnidadMedida(Integer unidadMedida) {
+    public void setUnidadMedida(String unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
 }

@@ -1,5 +1,7 @@
 package com.market.fama.domain;
 
+import java.util.List;
+
 public class Product {
     private int productId;
     private String nameProduct;
@@ -14,6 +16,7 @@ public class Product {
     private int subbrandId;
     private Subbrand subbrand;
     private String unitMeasurement;
+    private List<Image> imagens;
 
     public int getProductId() {
         return productId;
@@ -117,5 +120,13 @@ public class Product {
 
     public void setUnitMeasurement(String unitMeasurement) {
         this.unitMeasurement = unitMeasurement;
+    }
+
+    public List<Image> getImagens() {
+        return imagens;
+    }
+
+    public void setImagens(List<Image> imagens) {
+        this.imagens = imagens;
     }
 }
