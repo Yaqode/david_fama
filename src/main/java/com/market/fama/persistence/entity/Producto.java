@@ -2,6 +2,8 @@ package com.market.fama.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "tbl_producto")
@@ -46,6 +48,12 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "id_submarca", insertable = false, updatable = false)
     private Submarca submarca;
+
+    @OneToMany(mappedBy = "imagenes")
+    private List<Imagen> imagenes;
+
+    @Column(name = "unidad_medida")
+    private Integer unidadMedida;
 
     public Integer getIdProducto() {
         return idProducto;
@@ -141,5 +149,21 @@ public class Producto {
 
     public void setSubmarca(Submarca submarca) {
         this.submarca = submarca;
+    }
+
+    public List<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<Imagen> imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public Integer getUnidadMedida() {
+        return unidadMedida;
+    }
+
+    public void setUnidadMedida(Integer unidadMedida) {
+        this.unidadMedida = unidadMedida;
     }
 }

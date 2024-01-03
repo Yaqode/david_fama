@@ -13,6 +13,7 @@ public class Product {
     private Subcategory subcategory;
     private int subbrandId;
     private Subbrand subbrand;
+    private String unitMeasurement;
 
     public int getProductId() {
         return productId;
@@ -108,5 +109,13 @@ public class Product {
 
     public void setSubbrand(Subbrand subbrand) {
         this.subbrand = subbrand;
+    }
+
+    public String getUnitMeasurement() {
+        return unitMeasurement;
+    }
+
+    public void setUnitMeasurement(String unitMeasurement) {
+        this.unitMeasurement = unitMeasurement;
     }
 }
