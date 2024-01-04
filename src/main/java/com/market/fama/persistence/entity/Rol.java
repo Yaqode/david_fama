@@ -18,8 +18,8 @@ public class Rol {
     @Column(name = "descripcion_rol")
     private String descripcionRol;
 
-    @OneToMany(mappedBy = "rol")
-    private List<Usuario> usuarios;
+    @OneToOne(mappedBy = "rol")
+    private Usuario usuario;
 
     public Integer getIdRol() {
         return idRol;
@@ -45,11 +45,11 @@ public class Rol {
         this.descripcionRol = descripcionRol;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

@@ -2,8 +2,6 @@ package com.market.fama.persistence.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "tbl_persona")
 public class Persona {
@@ -24,8 +22,8 @@ public class Persona {
     @Column(name = "telefonoPersona")
     private Integer telefonoPersona;
 
-    /*@OneToOne(mappedBy = "rol")
-    private List<Usuario> usuario;*/
+    @OneToOne(mappedBy = "persona")
+    private Usuario usuario;
 
     public Integer getIdPersona() {
         return idPersona;
@@ -67,11 +65,11 @@ public class Persona {
         this.telefonoPersona = telefonoPersona;
     }
 
-    /*public List<Usuario> getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(List<Usuario> usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }*/
+    }
 }
