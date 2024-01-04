@@ -19,7 +19,7 @@ public class Imagen {
     private Integer idProducto;
 
     @Column(name = "no_orden")
-    private Integer noOrden;
+    private String noOrden;
 
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
@@ -49,11 +49,11 @@ public class Imagen {
         this.idProducto = idProducto;
     }
 
-    public Integer getNoOrden() {
+    public String getNoOrden() {
         return noOrden;
     }
 
-    public void setNoOrden(Integer noOrden) {
+    public void setNoOrden(String noOrden) {
         this.noOrden = noOrden;
     }
 

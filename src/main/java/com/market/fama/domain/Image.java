@@ -8,7 +8,7 @@ public class Image {
 
     private Integer productId;
 
-    private Integer ordenNo;
+    private String ordenNo;
 
     public Integer getImageId() {
         return imageId;
@@ -34,11 +34,11 @@ public class Image {
         this.productId = productId;
     }
 
-    public Integer getOrdenNo() {
+    public String getOrdenNo() {
         return ordenNo;
     }
 
-    public void setOrdenNo(Integer ordenNo) {
+    public void setOrdenNo(String ordenNo) {
         this.ordenNo = ordenNo;
     }
 
