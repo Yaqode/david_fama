@@ -25,22 +25,16 @@ public class UtilService {
     }
 
     public static void guardarImagenComoBase64(Image image, String urlImage) throws IOException {
-                String rutaCompleta = obtenerRutaBaseDelProyecto() + "\\img\\productos" + urlImage;
+        String rutaCompleta = obtenerRutaBaseDelProyecto() + "\\img\\productos" + urlImage;
 
-        if (image instanceof BufferedImage) {
-            // Si la imagen ya es BufferedImage, simplemente guárdala como JPEG
-            guardarImagenComoJPEG((BufferedImage) image, rutaCompleta);
-        } else {
-            // Si no es BufferedImage, conviértela a BufferedImage antes de guardarla
-            BufferedImage bufferedImage = convertirAImageBuffered(image);
-            guardarImagenComoJPEG(bufferedImage, rutaCompleta);
-        }
-    }
-
-    private static void guardarImagenComoJPEG(BufferedImage bufferedImage, String rutaCompleta) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(new File(rutaCompleta))) {
-            // Guardar la imagen en formato JPEG
-            ImageIO.write(bufferedImage, "jpg", fos);
+            String imagenBase64 = image.getImageRoute();
+            // Verificar y quitar el prefijo "data:image/jpeg;base64,"
+            if (imagenBase64.startsWith("data:image/jpeg;base64,")) {
+                imagenBase64 = imagenBase64.substring("data:image/jpeg;base64,".length());
+            }
+            byte[] imagenBytes = Base64.getDecoder().decode(imagenBase64);
+            fos.write(imagenBytes);
         }
     }
 
