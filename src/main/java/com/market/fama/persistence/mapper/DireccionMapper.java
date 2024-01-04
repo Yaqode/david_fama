@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ColoniaMapper.class, UsuarioMapper.class})
+@Mapper(componentModel = "spring", uses = {ColoniaMapper.class})
 public interface DireccionMapper {
     @Mappings({
             @Mapping(source = "idDireccion", target = "directionId"),
