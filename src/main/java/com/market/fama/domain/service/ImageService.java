@@ -16,7 +16,6 @@ import java.util.Optional;
 public class ImageService {
     @Autowired
     private ImageRepository ImageRepository;
-
     private UtilService utilService;
 
     public List<Image> getAll() {
