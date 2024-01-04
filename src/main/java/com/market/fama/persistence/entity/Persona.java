@@ -20,7 +20,7 @@ public class Persona {
     private String apellidoMaterno;
 
     @Column(name = "telefonoPersona")
-    private Integer telefonoPersona;
+    private String telefonoPersona;
 
     @OneToOne(mappedBy = "persona")
     private Usuario usuario;
@@ -57,11 +57,11 @@ public class Persona {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public Integer getTelefonoPersona() {
+    public String getTelefonoPersona() {
         return telefonoPersona;
     }
 
-    public void setTelefonoPersona(Integer telefonoPersona) {
+    public void setTelefonoPersona(String telefonoPersona) {
         this.telefonoPersona = telefonoPersona;
     }
 

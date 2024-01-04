@@ -6,7 +6,7 @@ public class Person {
     private String personName;
     private String lastName;
     private String secondLastName;
-    private int personPhone;
+    private String personPhone;
     private User user;
 
     public int getPersonId() {
@@ -41,11 +41,11 @@ public class Person {
         this.secondLastName = secondLastName;
     }
 
-    public int getPersonPhone() {
+    public String getPersonPhone() {
         return personPhone;
     }
 
-    public void setPersonPhone(int personPhone) {
+    public void setPersonPhone(String personPhone) {
         this.personPhone = personPhone;
     }
 
