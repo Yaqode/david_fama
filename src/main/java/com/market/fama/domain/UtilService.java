@@ -24,11 +24,23 @@ public class UtilService {
         return null;
     }
 
-    public static void guardarImagenComoBase64(Image image, String urlImage) throws IOException {
-        String rutaCompleta = obtenerRutaBaseDelProyecto() + "\\img\\productos" + urlImage;
+    public static void guardarImagenComoBase64(Image image, String tipo, String urlImage) throws IOException {
+        String rutaCompleta = obtenerRutaBaseDelProyecto() + tipo + urlImage;
 
         try (FileOutputStream fos = new FileOutputStream(new File(rutaCompleta))) {
             String imagenBase64 = image.getImageRoute();
+            // Verificar y quitar el prefijo "data:image/jpeg;base64,"
+            if (imagenBase64.startsWith("data:image/jpeg;base64,")) {
+                imagenBase64 = imagenBase64.substring("data:image/jpeg;base64,".length());
+            }
+            byte[] imagenBytes = Base64.getDecoder().decode(imagenBase64);
+            fos.write(imagenBytes);
+        }
+    }
+
+    public static void guardarImagenBase64(String imagenBase64, String urlImage) throws IOException {
+
+        try (FileOutputStream fos = new FileOutputStream(new File(urlImage))) {
             // Verificar y quitar el prefijo "data:image/jpeg;base64,"
             if (imagenBase64.startsWith("data:image/jpeg;base64,")) {
                 imagenBase64 = imagenBase64.substring("data:image/jpeg;base64,".length());

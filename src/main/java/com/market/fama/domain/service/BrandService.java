@@ -1,6 +1,7 @@
 package com.market.fama.domain.service;
 
 import com.market.fama.domain.Brand;
+import com.market.fama.domain.Subbrand;
 import com.market.fama.domain.UtilService;
 import com.market.fama.domain.repository.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,18 @@ public class BrandService {
         return optionalBrand;
     }
 
+
     public Brand save(Brand brand) {
+        String urlImage = "\\img\\marcas\\" + brand.getNameBrand() + "_" + "logo" + ".jpg";
+        //Crear la imagen
+        try {
+            utilService.guardarImagenBase64(brand.getLinkImageBrand(),urlImage);
+            brand.setLinkImageBrand(urlImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         return brandRepository.save(brand);
     }
 

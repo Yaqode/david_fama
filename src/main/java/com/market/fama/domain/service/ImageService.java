@@ -72,7 +72,7 @@ public class ImageService {
 
             //Crear la imagen
             try {
-                utilService.guardarImagenComoBase64(image, urlImage);
+                utilService.guardarImagenComoBase64(image, "\\img\\productos" , urlImage);
             } catch (IOException e) {
                 e.printStackTrace();
             }
