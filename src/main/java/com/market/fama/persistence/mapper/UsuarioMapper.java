@@ -16,6 +16,7 @@ public interface UsuarioMapper {
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "correoUsuario", target = "userEmail"),
             @Mapping(source = "nombreUsuario", target = "userName"),
+            @Mapping(source = "contraseniaUsuario", target = "userPassword"),
             @Mapping(source = "idRol", target = "profileId"),
             @Mapping(source = "idPersona", target = "personId"),
             @Mapping(source = "rol", target = "profile"),

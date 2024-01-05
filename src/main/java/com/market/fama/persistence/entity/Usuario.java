@@ -35,7 +35,7 @@ public class Usuario {
     @JoinColumn(name = "id_persona", insertable = false, updatable = false)
     private Persona persona;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Direccion> direcciones;
 
     public Integer getIdUsuario() {

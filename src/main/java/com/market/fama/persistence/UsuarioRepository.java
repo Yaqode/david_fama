@@ -43,4 +43,10 @@ public class UsuarioRepository implements UserRepository {
     public void delete(int userId) {
         usuarioCrudRepository.deleteById(userId);
     }
+
+    @Override
+    public User findByCorreoUsuario(String usuario) {
+        Usuario usuario1 = usuarioCrudRepository.findByCorreoUsuario(usuario);
+        return mapper.toUser(usuario1);
+    }
 }
