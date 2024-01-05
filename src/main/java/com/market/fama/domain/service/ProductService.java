@@ -48,4 +48,74 @@ public class ProductService {
             return true;
         }).orElse(false);
     }
+
+    public List<Product> findByIdSubmarca (int idSubmarca) {
+        List<Product> listProducts = productRepository.findByIdSubmarca(idSubmarca);
+        listProducts.forEach(product -> {
+            product.getImagens().forEach(image -> {
+                try {
+                    image.setImageRoute(utilService.leerImagenComoBase64("\\img\\productos\\" + image.getImageRoute()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        return listProducts;
+    }
+
+    public List<Product> findByIdSubcategoria(int idSubcategoria) {
+        List<Product> listProducts = productRepository.findByIdSubcategoria(idSubcategoria);
+        listProducts.forEach(product -> {
+            product.getImagens().forEach(image -> {
+                try {
+                    image.setImageRoute(utilService.leerImagenComoBase64("\\img\\productos\\" + image.getImageRoute()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        return listProducts;
+    }
+
+    public List<Product> findBySubmarcaIdMarca(int idMarca) {
+        List<Product> listProducts = productRepository.findBySubmarcaIdMarca(idMarca);
+        listProducts.forEach(product -> {
+            product.getImagens().forEach(image -> {
+                try {
+                    image.setImageRoute(utilService.leerImagenComoBase64("\\img\\productos\\" + image.getImageRoute()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        return listProducts;
+    }
+
+    public List<Product> findBySubcategoriaIdCategoria(int idCategoria) {
+        List<Product> listProducts = productRepository.findBySubcategoriaIdCategoria(idCategoria);
+        listProducts.forEach(product -> {
+            product.getImagens().forEach(image -> {
+                try {
+                    image.setImageRoute(utilService.leerImagenComoBase64("\\img\\productos\\" + image.getImageRoute()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        return listProducts;
+    }
+
+    public List<Product> findBySubcategoriaCategoriaIdFamilia(int idFamilia) {
+        List<Product> listProducts = productRepository.findBySubcategoriaCategoriaIdFamilia(idFamilia);
+        listProducts.forEach(product -> {
+            product.getImagens().forEach(image -> {
+                try {
+                    image.setImageRoute(utilService.leerImagenComoBase64("\\img\\productos\\" + image.getImageRoute()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        return listProducts;
+    }
 }

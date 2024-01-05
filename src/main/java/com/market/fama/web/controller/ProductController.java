@@ -33,4 +33,29 @@ public class ProductController {
     public boolean delete(@PathVariable("id") int productId) {
         return productService.delete(productId);
     }
+
+    @GetMapping("/findByIdSubmarca/{id}")
+    public List<Product> findByIdSubmarca(@PathVariable("id") int id) {
+        return productService.findByIdSubmarca(id);
+    }
+
+    @GetMapping("/findByIdSubcategoria/{id}")
+    public List<Product> findByIdSubcategoria(@PathVariable("id") int id) {
+        return productService.findByIdSubcategoria(id);
+    }
+
+    @GetMapping("/findBySubmarcaIdMarca/{id}")
+    public List<Product> findBySubmarcaIdMarca(@PathVariable("id") int id) {
+        return productService.findBySubmarcaIdMarca(id);
+    }
+
+    @GetMapping("/findBySubcategoriaIdCategoria/{id}")
+    public List<Product> findBySubcategoriaIdCategoria(@PathVariable("id") int id) {
+        return productService.findBySubcategoriaIdCategoria(id);
+    }
+
+    @GetMapping("/findBySubcategoriaCategoriaIdFamilia/{id}")
+    public List<Product> findBySubcategoriaCategoriaIdFamilia(@PathVariable("id") int id) {
+        return productService.findBySubcategoriaCategoriaIdFamilia(id);
+    }
 }

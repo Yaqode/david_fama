@@ -37,4 +37,34 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public void delete(int productId) { productoCrudRepository.deleteById(productId); }
+
+    @Override
+    public List<Product> findByIdSubmarca(int idSubmarca){
+        List<Producto> bySubmarca = (List<Producto>) productoCrudRepository.findByIdSubmarca(idSubmarca);
+        return mapper.toProducts(bySubmarca);
+    }
+
+    @Override
+    public List<Product> findByIdSubcategoria(int idSubcategoria){
+        List<Producto> bySubcategoria = (List<Producto>) productoCrudRepository.findByIdSubcategoria(idSubcategoria);
+        return mapper.toProducts(bySubcategoria);
+    }
+
+    @Override
+    public  List<Product> findBySubmarcaIdMarca(int idMarca){
+        List<Producto> byMarca = (List<Producto>) productoCrudRepository.findBySubmarcaIdMarca(idMarca);
+        return mapper.toProducts(byMarca);
+    }
+
+    @Override
+    public List<Product> findBySubcategoriaIdCategoria(int idCategoria){
+        List<Producto> byCategorias = (List<Producto>) productoCrudRepository.findBySubcategoriaIdCategoria(idCategoria);
+        return mapper.toProducts(byCategorias);
+    }
+
+    @Override
+    public List<Product> findBySubcategoriaCategoriaIdFamilia(int idFamilia){
+        List<Producto> byFamilias = (List<Producto>) productoCrudRepository.findBySubcategoriaCategoriaIdFamilia(idFamilia);
+        return mapper.toProducts(byFamilias);
+    }
 }
