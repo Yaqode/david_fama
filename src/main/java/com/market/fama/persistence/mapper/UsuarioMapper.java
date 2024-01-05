@@ -16,7 +16,6 @@ public interface UsuarioMapper {
             @Mapping(source = "idUsuario", target = "userId"),
             @Mapping(source = "correoUsuario", target = "userEmail"),
             @Mapping(source = "nombreUsuario", target = "userName"),
-            @Mapping(source = "contraseniaUsuario", target = "userPassword"),
             @Mapping(source = "idRol", target = "profileId"),
             @Mapping(source = "idPersona", target = "personId"),
             @Mapping(source = "rol", target = "profile"),
@@ -28,6 +27,6 @@ public interface UsuarioMapper {
     List<User> toUsers(List<Usuario> usuarios);
 
     @InheritInverseConfiguration
-    //@Mapping(target = "submarcas", ignore = true)
+    @Mapping(target = "contraseniaUsuario", ignore = true)
     Usuario toUsuario(User user);
 }
