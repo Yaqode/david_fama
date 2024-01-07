@@ -25,7 +25,7 @@ public class UserSecurityService implements UserDetailsService {
 
         if (user.getUserId() != 0){
             return User.builder()
-                    .username(String.valueOf(user.getUserId()))
+                    .username(String.valueOf(user.getUserEmail()))
                     .password(user.getUserPassword())
                     .roles(String.valueOf(user.getProfileId()))
                     .build();
