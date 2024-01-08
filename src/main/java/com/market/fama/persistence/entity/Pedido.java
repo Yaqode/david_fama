@@ -44,6 +44,10 @@ public class Pedido {
     @OneToOne(mappedBy = "pedido")
     private EstatusPedido estatusPedido;
 
+    @OneToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
+
     public Integer getIdPedido() {
         return idPedido;
     }
@@ -130,5 +134,13 @@ public class Pedido {
 
     public void setEstatusPedido(EstatusPedido estatusPedido) {
         this.estatusPedido = estatusPedido;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

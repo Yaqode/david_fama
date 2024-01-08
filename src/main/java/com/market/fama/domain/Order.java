@@ -2,6 +2,7 @@ package com.market.fama.domain;
 
 import com.market.fama.persistence.entity.Compra;
 import com.market.fama.persistence.entity.EstatusPedido;
+import com.market.fama.persistence.entity.Pedido;
 import com.market.fama.persistence.entity.PedidoProducto;
 import jakarta.persistence.*;
 
@@ -20,6 +21,7 @@ public class Order {
     private Buy buy;
     private OrderProduct orderProduct;
     private StatusOrder statusOrder;
+    private User user;
 
     public Integer getOrderId() {
         return orderId;
@@ -107,5 +109,13 @@ public class Order {
 
     public void setStatusOrder(StatusOrder statusOrder) {
         this.statusOrder = statusOrder;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -27,6 +27,9 @@ public class Usuario {
     @Column(name = "id_persona")
     private Integer idPersona;
 
+    @OneToOne(mappedBy = "usuario")
+    private Pedido pedido;
+
     @OneToOne
     @JoinColumn(name = "id_rol", insertable = false, updatable = false)
     private Rol rol;
@@ -108,5 +111,13 @@ public class Usuario {
 
     public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }

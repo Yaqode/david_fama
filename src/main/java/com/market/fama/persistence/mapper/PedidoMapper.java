@@ -26,6 +26,7 @@ public interface PedidoMapper {
             @Mapping(source = "compra", target = "buy"),
             @Mapping(source = "pedidoProducto", target = "orderProduct"),
             @Mapping(source = "estatusPedido", target = "statusOrder"),
+            @Mapping(source = "usuario", target = "user"),
     })
     Order toOrder(Pedido pedido);
     List<Order> toOrders(List<Pedido> pedidos);

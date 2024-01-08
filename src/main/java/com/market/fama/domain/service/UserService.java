@@ -28,7 +28,9 @@ public class UserService {
     }
 
     public User getUserByEmail(String UserId) {
-        return UserRepository.findByCorreoUsuario(UserId);
+        User user = UserRepository.findByCorreoUsuario(UserId);
+        user.setUserPassword("");
+        return user;
     }
 
     public User save(User User) {
