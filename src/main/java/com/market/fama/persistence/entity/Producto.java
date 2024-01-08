@@ -55,6 +55,9 @@ public class Producto {
     @Column(name = "unidad_medida")
     private String unidadMedida;
 
+    @OneToOne(mappedBy = "producto")
+    private PedidoProducto pedidoProducto;
+
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -165,5 +168,13 @@ public class Producto {
 
     public void setUnidadMedida(String unidadMedida) {
         this.unidadMedida = unidadMedida;
+    }
+
+    public PedidoProducto getPedidoProducto() {
+        return pedidoProducto;
+    }
+
+    public void setPedidoProducto(PedidoProducto pedidoProducto) {
+        this.pedidoProducto = pedidoProducto;
     }
 }
