@@ -26,6 +26,12 @@ public class CompraRepository implements BuyRepository {
     }
 
     @Override
+    public List<Buy> getConfirmadas(){
+        List<Compra> Compras = (List<Compra>) compraCrudRepository.findAll();
+        return mapper.toBuy(Compras);
+    }
+
+    @Override
     public Optional<Buy> getBuy(int BuyId) {
         return compraCrudRepository.findById(BuyId).map(Compra -> mapper.toBuy(Compra));
     }

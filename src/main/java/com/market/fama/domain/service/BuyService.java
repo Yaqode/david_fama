@@ -17,6 +17,10 @@ public class BuyService {
         return BuyRepository.getAll();
     }
 
+    public List<Buy> getConfirmadas() {
+        return BuyRepository.getConfirmadas();
+    }
+
     public Optional<Buy> getBuy(int BuyId) {
         return BuyRepository.getBuy(BuyId);
     }

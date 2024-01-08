@@ -28,7 +28,7 @@ public interface PedidoMapper {
             @Mapping(source = "estatusPedido", target = "statusOrder"),
     })
     Order toOrder(Pedido pedido);
-    List<Order> toOrder(List<Pedido> pedidos);
+    List<Order> toOrders(List<Pedido> pedidos);
 
     @InheritInverseConfiguration
     Pedido toPedido(Order order);

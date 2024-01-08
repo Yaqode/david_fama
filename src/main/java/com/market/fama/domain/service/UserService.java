@@ -27,6 +27,10 @@ public class UserService {
         return UserRepository.getUser(UserId);
     }
 
+    public User getUserByEmail(String UserId) {
+        return UserRepository.findByCorreoUsuario(UserId);
+    }
+
     public User save(User User) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

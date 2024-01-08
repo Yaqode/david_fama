@@ -22,6 +22,12 @@ public class PedidoRepository implements OrderRepository {
     @Override
     public List<Order> getAll(){
         List<Pedido> Pedidos = (List<Pedido>) PedidoCrudRepository.findAll();
+        return mapper.toOrders(Pedidos);
+    }
+
+    @Override
+    public Order getOrderActiveByIdUser(int idUser){
+        Pedido Pedidos = PedidoCrudRepository.findActivosByUsuario(idUser);
         return mapper.toOrder(Pedidos);
     }
 

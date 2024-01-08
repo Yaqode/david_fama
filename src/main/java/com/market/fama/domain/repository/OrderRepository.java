@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface OrderRepository {
     List<Order> getAll();
     Optional<Order> getOrder(int orderId);
+    Order getOrderActiveByIdUser(int userId);
     Order save(Order order);
     void delete(int orderId);
 }

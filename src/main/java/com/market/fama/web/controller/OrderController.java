@@ -30,6 +30,11 @@ public class OrderController {
         return OrderService.save(Order);
     }
 
+    @PostMapping("/agregarProducto")
+    public Order agregarProducto(@RequestBody Order Order) {
+        return OrderService.agregarProducto(Order);
+    }
+
     @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable("id") int OrderId) {
         return OrderService.delete(OrderId);
