@@ -15,14 +15,14 @@ import org.mapstruct.Mappings;
 import java.util.Date;
 import java.util.List;
 
-@Mapper(componentModel = "spring")//, uses = {PedidoMapper.class})
+@Mapper(componentModel = "spring", uses = {PedidoMapper.class})
 public interface CompraMapper {
     @Mappings({
             @Mapping(source = "idCompra", target = "buyId"),
             @Mapping(source = "claveTransaccionPaypal", target = "transactionKeyPaypal"),
             @Mapping(source = "fechaCompra", target = "buyDate"),
             @Mapping(source = "idPedido", target = "orderId"),
-            //@Mapping(source = "pedido", target = "order"),
+            @Mapping(source = "pedido", target = "order"),
     })
     Buy toBuy(Compra compra);
     List<Buy> toBuy(List<Compra> compras);

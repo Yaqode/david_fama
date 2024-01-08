@@ -12,7 +12,7 @@ import org.mapstruct.Mappings;
 import java.util.Date;
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {UsuarioMapper.class, CompraMapper.class, EstatusPedidoMapper.class, DireccionMapper.class, PedidoProductoMapper.class})
+@Mapper(componentModel = "spring", uses = {UsuarioMapper.class, EstatusPedidoMapper.class, DireccionMapper.class, PedidoProductoMapper.class})
 public interface PedidoMapper {
     @Mappings({
             @Mapping(source = "idPedido", target = "orderId"),

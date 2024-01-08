@@ -1,6 +1,7 @@
 package com.market.fama.domain.service;
 
 import com.market.fama.domain.Buy;
+import com.market.fama.domain.Order;
 import com.market.fama.domain.repository.BuyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,11 @@ public class BuyService {
     }
 
     public Buy save(Buy Buy) {
+        //Se debe completar lo de pedido
+
+        Order order = new Order();
+
+
         return BuyRepository.save(Buy);
     }
 

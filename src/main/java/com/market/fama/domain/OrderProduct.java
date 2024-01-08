@@ -8,6 +8,7 @@ public class OrderProduct {
     private Integer productOrderId;
     private Integer orderId;
     private Integer productId;
+    private Integer amount;
     private Order order;
     private Product product;
 
@@ -49,5 +50,13 @@ public class OrderProduct {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }

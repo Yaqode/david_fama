@@ -19,6 +19,9 @@ public class PedidoProducto {
     @Column(name = "id_producto")
     private Integer idProducto;
 
+    @Column(name = "cantidad")
+    private Integer cantidadProducto;
+
     @OneToOne
     @JoinColumn(name = "id_pedido", insertable = false, updatable = false)
     private Pedido pedido;
@@ -65,5 +68,13 @@ public class PedidoProducto {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Integer getCantidadProducto() {
+        return cantidadProducto;
+    }
+
+    public void setCantidadProducto(Integer cantidadProducto) {
+        this.cantidadProducto = cantidadProducto;
     }
 }
