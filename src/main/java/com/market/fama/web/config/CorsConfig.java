@@ -12,7 +12,7 @@ public class CorsConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8090", "http://localhost"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8090", "https://davidgommar.github.io"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
 
