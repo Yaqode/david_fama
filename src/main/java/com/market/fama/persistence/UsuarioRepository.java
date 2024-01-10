@@ -3,12 +3,15 @@ package com.market.fama.persistence;
 import com.market.fama.domain.Profile;
 import com.market.fama.domain.User;
 import com.market.fama.domain.repository.UserRepository;
+import com.market.fama.domain.service.UserService;
 import com.market.fama.persistence.crud.RolCrudRepository;
 import com.market.fama.persistence.crud.UsuarioCrudRepository;
 import com.market.fama.persistence.entity.Rol;
 import com.market.fama.persistence.entity.Usuario;
 import com.market.fama.persistence.mapper.RolMapper;
 import com.market.fama.persistence.mapper.UsuarioMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,7 +24,7 @@ public class UsuarioRepository implements UserRepository {
     private UsuarioCrudRepository usuarioCrudRepository;
     @Autowired
     private UsuarioMapper mapper;
-
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     @Override
     public List<User> getAll() {
         List<Usuario> usuarios = (List<Usuario>) usuarioCrudRepository.findAll();
@@ -36,6 +39,7 @@ public class UsuarioRepository implements UserRepository {
     @Override
     public User save(User user) {
         Usuario usuario = mapper.toUsuario(user);
+        logger.info("Este repo " + usuario.getContraseniaUsuario());
         return mapper.toUser(usuarioCrudRepository.save(usuario));
     }
 
