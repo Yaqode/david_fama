@@ -63,7 +63,7 @@ public class OrderService {
             // Se debe crear un carrito
             logger.info("Se crea carrito" );
             Order orderNew = new Order();
-
+            orderNew.setOrderId(0);
             orderNew.setActiveOrder(true);
             orderNew.setUserId(Order.getUserId());
             logger.info("Se crea busca guardar un pedido" +orderNew.toString());
