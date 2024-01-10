@@ -5,6 +5,8 @@ import com.market.fama.domain.repository.OrderProductRepository;
 import com.market.fama.persistence.crud.PedidoProductoCrudRepository;
 import com.market.fama.persistence.entity.PedidoProducto;
 import com.market.fama.persistence.mapper.PedidoProductoMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +15,7 @@ import java.util.Optional;
 
 @Repository
 public class PedidoProductoRepository implements OrderProductRepository {
-
+    private static final Logger logger = LoggerFactory.getLogger(PedidoProductoRepository.class);
     @Autowired
     private PedidoProductoCrudRepository PedidoProductoCrudRepository;
     @Autowired
@@ -38,7 +40,9 @@ public class PedidoProductoRepository implements OrderProductRepository {
 
     @Override
     public OrderProduct save(OrderProduct OrderProduct) {
+        logger.info("Se crea busca guardar un pedido" +OrderProduct);
         PedidoProducto PedidoProducto = mapper.toPedidoProducto(OrderProduct);
+        logger.info("Se crea busca guardar un pedido" +PedidoProducto);
         return mapper.toOrderProduct(PedidoProductoCrudRepository.save(PedidoProducto));
     }
 
