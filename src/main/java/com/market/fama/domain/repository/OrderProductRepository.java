@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface OrderProductRepository {
     List<OrderProduct> getAll();
+    List<OrderProduct> findPedidoProductosActivosByUsuarioId(int userId);
     Optional<OrderProduct> getOrderProduct(int orderProductId);
     OrderProduct save(OrderProduct orderProduct);
     void delete(int brandId);

@@ -34,6 +34,12 @@ public class DireccionRepository implements DirectionRepository {
     }
 
     @Override
+    public List<Direction> getDirectionsByUser(int userId) {
+        List<Direccion> direcciones = (List<Direccion>) direccionCrudRepository.findByIdUsuario(userId);
+        return mapper.toDirections(direcciones);
+    }
+
+    @Override
     public Direction save(Direction direction) {
         Direccion direccion = mapper.toDireccion(direction);
         return mapper.toDirection(direccionCrudRepository.save(direccion));

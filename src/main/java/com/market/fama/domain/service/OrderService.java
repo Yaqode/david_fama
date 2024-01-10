@@ -27,8 +27,12 @@ public class OrderService {
         return OrderRepository.getOrder(OrderId);
     }
 
+    public List<Order> getCarrito(int user) {
+        return OrderRepository.getOrderActiveByIdUser(user);
+    }
+
     public Order getOrderActiveByIdUser(int UserId){
-        return OrderRepository.getOrderActiveByIdUser(UserId);
+        return OrderRepository.getOrderActiveByIdUser(UserId).get(0);
     }
 
     public Order save(Order Order) {
@@ -39,7 +43,7 @@ public class OrderService {
         //Se debe consultar el carrito activo
         Order orderActive = getOrderActiveByIdUser(Order.getUserId());
 
-        if (orderActive.isActiveOrder()) {
+        if (orderActive != null) {
             // Se debe agregar solo un producto
             OrderProduct orderProduct = new OrderProduct();
 
@@ -58,7 +62,7 @@ public class OrderService {
             orderNew.setActiveOrder(true);
             orderNew.setUserId(Order.getUserId());
 
-            orderNew =  OrderRepository.save(Order);
+            orderNew =  OrderRepository.save(orderNew);
 
             OrderProduct orderProduct = new OrderProduct();
 

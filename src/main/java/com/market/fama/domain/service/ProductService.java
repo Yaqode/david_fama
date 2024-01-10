@@ -35,7 +35,20 @@ public class ProductService {
     }
 
     public Optional<Product> getProduct(int productId) {
-        return productRepository.getProduct(productId);
+        Optional<Product> optionalProduct = productRepository.getProduct(productId);
+
+        optionalProduct.ifPresent(product -> {
+            // Modificar el componente del objeto Brand, por ejemplo:
+            product.getImagens().forEach(image -> {
+                try {
+                    image.setImageRoute(utilService.leerImagenComoBase64("\\img\\productos\\" + image.getImageRoute()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+
+        return optionalProduct;
     }
 
     public Product save(Product product) {

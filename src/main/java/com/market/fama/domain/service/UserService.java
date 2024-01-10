@@ -24,7 +24,11 @@ public class UserService {
     }
 
     public Optional<User> getUser(int UserId) {
-        return UserRepository.getUser(UserId);
+        Optional<User> user = UserRepository.getUser(UserId);
+        user.ifPresent(user1 -> {
+            user1.setUserPassword("---Error---");
+        });
+        return user;
     }
 
     public User getUserByEmail(String UserId) {

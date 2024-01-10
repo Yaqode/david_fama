@@ -25,6 +25,11 @@ public class OrderController {
         return OrderService.getOrder(OrderId);
     }
 
+    @GetMapping("/carrito/{userId}")
+    public List<Order> getCarrito(@PathVariable("userId") int userId) {
+        return OrderService.getCarrito(userId);
+    }
+
     @PostMapping("/save")
     public Order save(@RequestBody Order Order) {
         return OrderService.save(Order);

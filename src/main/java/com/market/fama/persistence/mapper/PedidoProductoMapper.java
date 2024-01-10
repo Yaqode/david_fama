@@ -23,7 +23,7 @@ public interface PedidoProductoMapper {
             @Mapping(source = "idPedido", target = "orderId"),
             @Mapping(source = "idProducto", target = "productId"),
             @Mapping(source = "cantidadProducto", target = "amount"),
-            @Mapping(source = "pedido", target = "order"),
+            //@Mapping(source = "pedido", target = "order"),
             @Mapping(source = "producto", target = "product"),
     })
     OrderProduct toOrderProduct(PedidoProducto pedidoProducto);

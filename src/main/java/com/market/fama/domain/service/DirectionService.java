@@ -27,6 +27,11 @@ public class DirectionService {
 
     }
 
+    public List<Direction> getDirectionsByUser(int DirectionId) {
+        return DirectionRepository.getDirectionsByUser(DirectionId);
+
+    }
+
     public Direction save(Direction Direction) {
         return DirectionRepository.save(Direction);
     }

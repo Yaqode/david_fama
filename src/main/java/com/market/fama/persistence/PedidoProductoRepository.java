@@ -26,6 +26,12 @@ public class PedidoProductoRepository implements OrderProductRepository {
     }
 
     @Override
+    public List<OrderProduct> findPedidoProductosActivosByUsuarioId(int userId){
+        List<PedidoProducto> PedidoProductos = (List<PedidoProducto>) PedidoProductoCrudRepository.findPedidoProductosActivosByUsuarioId(userId);
+        return mapper.toOrderProduct(PedidoProductos);
+    }
+
+    @Override
     public Optional<OrderProduct> getOrderProduct(int OrderProductId) {
         return PedidoProductoCrudRepository.findById(OrderProductId).map(PedidoProducto -> mapper.toOrderProduct(PedidoProducto));
     }

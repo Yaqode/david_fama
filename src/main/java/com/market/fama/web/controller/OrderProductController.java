@@ -20,6 +20,11 @@ public class OrderProductController {
         return OrderProductService.getAll();
     }
 
+    @GetMapping("/carrito/{userId}")
+    public List<OrderProduct> getCarrito(@PathVariable("userId") int userId) {
+        return OrderProductService.getCarritoProductos(userId);
+    }
+
     @GetMapping("/{OrderProductId}")
     public Optional<OrderProduct> getOrderProduct(@PathVariable("OrderProductId") int OrderProductId) {
         return OrderProductService.getOrderProduct(OrderProductId);

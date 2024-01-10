@@ -27,6 +27,11 @@ public class DirectionController {
         return directionService.getDirection(directionId);
     }
 
+    @GetMapping("/direccion/user/{userId}")
+    public List<Direction> getDirectionsByUser(@PathVariable("userId") int userId) {
+        return directionService.getDirectionsByUser(userId);
+    }
+
     @PostMapping("/save")
     public Direction save(@RequestBody Direction direction) {
         return directionService.save(direction);

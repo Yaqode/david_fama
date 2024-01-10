@@ -17,7 +17,7 @@ public interface ColoniaMapper {
     @Mappings({
             @Mapping(source = "idColonia", target = "colonyId"),
             @Mapping(source = "nombreColonia", target = "nameColony"),
-            @Mapping(source = "direcciones", target = "directions"),
+            //@Mapping(source = "direcciones", target = "directions"),
     })
     Colony toColony(Colonia colonia);
     List<Colony> toColony(List<Colonia> colonias);
