@@ -38,8 +38,10 @@ public class UsuarioRepository implements UserRepository {
 
     @Override
     public User save(User user) {
+        logger.info("Este repo " + user.getUserPassword());
         Usuario usuario = mapper.toUsuario(user);
         logger.info("Este repo " + usuario.getContraseniaUsuario());
+        usuario.setContraseniaUsuario(user.getUserPassword());
         return mapper.toUser(usuarioCrudRepository.save(usuario));
     }
 
