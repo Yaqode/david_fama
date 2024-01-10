@@ -40,18 +40,57 @@ public class AuthController {
 
         String jwt = jwtUtil.create(loginDto.getUsername());
 
+        String[] email = authentication.getPrincipal().toString().split(",");
+        String usernameParte = "";
+        for (String email1 : email) {
+            if (email1.contains("=")) {
+                usernameParte = email1;
+                break;
+            }
+        }
 
-        System.out.println(authentication);
+        String emailLimpio = "";
+        String[] usernameSplit = usernameParte.split("=");
+        if (usernameSplit.length == 2) {
+            emailLimpio = usernameSplit[1].trim();
+        }
 
-        String[] email = loginDto.getUsername().split(",");
-        String[] id = loginDto.getUsername().split("/");
-        String[] perfil = loginDto.getUsername().split("-");
+        String[] id = authentication.getPrincipal().toString().split("/");
+        String idParte = "";
+        for (String email1 : id) {
+            if (email1.contains(",")) {
+                idParte = email1;
+                break;
+            }
+        }
 
-        System.out.println(email[0]);
-        System.out.println(id[0]);
-        System.out.println(perfil[0]);
+        String idLimpio = "";
+        String[] idSplit = idParte.split(",");
+        if (idSplit.length == 2) {
+            idLimpio = idSplit[1].trim();
+        }
 
-        Response response = new Response("Bienvenido", jwt, email[0], id[0], perfil[0]);
+
+        String[] perfil = authentication.getPrincipal().toString().split("-");
+        String perfilParte = "";
+        for (String email1 : perfil) {
+            if (email1.contains("/")) {
+                perfilParte = email1;
+                break;
+            }
+        }
+
+        String perfilimpio = "";
+        String[] perfilSplit = perfilParte.split("/");
+        if (perfilSplit.length == 2) {
+            perfilimpio = perfilSplit[1].trim();
+        }
+
+        System.out.println(emailLimpio);
+        System.out.println(idLimpio);
+        System.out.println(perfilimpio);
+
+        Response response = new Response("Bienvenido", jwt, emailLimpio, idLimpio, perfilimpio);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, jwt)
