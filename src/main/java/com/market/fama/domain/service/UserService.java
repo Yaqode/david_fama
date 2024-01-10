@@ -3,6 +3,8 @@ package com.market.fama.domain.service;
 import com.market.fama.domain.User;
 import com.market.fama.domain.UtilService;
 import com.market.fama.domain.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +21,8 @@ public class UserService {
     private UserRepository UserRepository;
 
     private UtilService utilService;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public List<User> getAll() {
         return UserRepository.getAll();
@@ -40,10 +44,13 @@ public class UserService {
 
     public User save(User User) {
         System.out.println("Algo sucede " + User.getUserPassword());
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        logger.info("Algo sucede " + User.getUserPassword());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(User.getUserPassword().toString());
+        logger.info("Algo sucede " + hashedPassword);
         User.setUserPassword(hashedPassword);
         System.out.println("Algo sucede " + User.getUserPassword());
+        logger.info("Algo sucede " + User.getUserPassword());
         return UserRepository.save(User);
     }
 
