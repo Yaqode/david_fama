@@ -38,10 +38,11 @@ public class UserService {
     }
 
     public User save(User User) {
-
+        System.out.println("Algo sucede " + User.getUserPassword());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(User.getUserPassword());
+        String hashedPassword = passwordEncoder.encode(User.getUserPassword().toString());
         User.setUserPassword(hashedPassword);
+        System.out.println("Algo sucede " + User.getUserPassword());
         return UserRepository.save(User);
     }
 
