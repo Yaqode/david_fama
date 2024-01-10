@@ -5,6 +5,7 @@ import com.market.fama.domain.UtilService;
 import com.market.fama.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class UserService {
 
     public User save(User User) {
         System.out.println("Algo sucede " + User.getUserPassword());
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(User.getUserPassword().toString());
         User.setUserPassword(hashedPassword);
         System.out.println("Algo sucede " + User.getUserPassword());
