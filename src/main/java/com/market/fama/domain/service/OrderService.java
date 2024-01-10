@@ -47,7 +47,7 @@ public class OrderService {
         //Se debe consultar el carrito activo
         Order orderActive = getOrderActiveByIdUser(Order.getUserId());
         logger.info("Orden activa " + orderActive.toString());
-        if (orderActive != null) {
+        if (orderActive.getOrderId() != 0) {
             // Se debe agregar solo un producto
             OrderProduct orderProduct = new OrderProduct();
 
