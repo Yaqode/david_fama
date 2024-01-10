@@ -41,9 +41,9 @@ public class PedidoRepository implements OrderRepository {
 
     @Override
     public Order save(Order Order) {
-        logger.info("Se crea busca guardar un pedido" +Order);
+        logger.info("Se crea busca guardar un pedido" +Order.toString());
         Pedido Pedido = mapper.toPedido(Order);
-        logger.info("Se crea busca guardar un pedido" +Pedido);
+        logger.info("Se crea busca guardar un pedido" +Pedido.toString());
         return mapper.toOrder(PedidoCrudRepository.save(Pedido));
     }
 

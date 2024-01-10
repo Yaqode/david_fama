@@ -43,18 +43,19 @@ public class OrderService {
     }
 
     public Order agregarProducto(Order Order) {
+        logger.info("Orden activa " + Order.toString());
         //Se debe consultar el carrito activo
         Order orderActive = getOrderActiveByIdUser(Order.getUserId());
-        logger.info("Orden activa " + orderActive);
+        logger.info("Orden activa " + orderActive.toString());
         if (orderActive != null) {
             // Se debe agregar solo un producto
             OrderProduct orderProduct = new OrderProduct();
 
             orderProduct.setProductId(Order.getOrderProduct().getProductId());
             orderProduct.setOrderId(orderActive.getOrderId());
-            logger.info("Productos " + orderProduct);
+            logger.info("Productos " + orderProduct.toString());
             OrderProduct productoAgregado = orderProductService.save(orderProduct);
-            logger.info("Orden agregada " + productoAgregado);
+            logger.info("Orden agregada " + productoAgregado.toString());
             return orderActive;
 
         } else {
@@ -65,16 +66,16 @@ public class OrderService {
 
             orderNew.setActiveOrder(true);
             orderNew.setUserId(Order.getUserId());
-            logger.info("Se crea busca guardar un pedido" +orderNew);
+            logger.info("Se crea busca guardar un pedido" +orderNew.toString());
             orderNew =  OrderRepository.save(orderNew);
-            logger.info("Se guardo un pedido" +orderNew);
+            logger.info("Se guardo un pedido" +orderNew.toString());
             OrderProduct orderProduct = new OrderProduct();
 
             orderProduct.setProductId(Order.getOrderProduct().getProductId());
             orderProduct.setOrderId(orderNew.getOrderId());
-            logger.info("Se crea busca guardar un producto pedido" +orderProduct);
+            logger.info("Se crea busca guardar un producto pedido" +orderProduct.toString());
             OrderProduct productoAgregado = orderProductService.save(orderProduct);
-            logger.info("Se guardo un pedido producto " +productoAgregado);
+            logger.info("Se guardo un pedido producto " +productoAgregado.toString());
             return orderNew;
         }
     }

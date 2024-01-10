@@ -2,6 +2,8 @@ package com.market.fama.web.controller;
 
 import com.market.fama.domain.Order;
 import com.market.fama.domain.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,8 @@ public class OrderController {
 
     @Autowired
     private OrderService OrderService;
+
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @GetMapping("/all")
     public List<Order> getAll() {
@@ -37,6 +41,7 @@ public class OrderController {
 
     @PostMapping("/agregarProducto")
     public Order agregarProducto(@RequestBody Order Order) {
+        logger.info("Se crea busca guardar un pedido" +Order);
         return OrderService.agregarProducto(Order);
     }
 
