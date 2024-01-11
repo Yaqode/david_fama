@@ -35,7 +35,11 @@ public class OrderService {
     }
 
     public Order getOrderActiveByIdUser(int UserId){
-        return OrderRepository.getOrderActiveByIdUser(UserId).get(0);
+        List<Order> orders = OrderRepository.getOrderActiveByIdUser(UserId);
+        if(!orders.isEmpty()){
+            return orders.get(0);
+        }
+        return new Order();
     }
 
     public Order save(Order Order) {
@@ -47,7 +51,7 @@ public class OrderService {
         //Se debe consultar el carrito activo
         Order orderActive = getOrderActiveByIdUser(Order.getUserId());
         logger.info("Orden activa " + orderActive.toString());
-        if (orderActive.getOrderId() != 0) {
+        if (orderActive.getOrderId() != null) {
             // Se debe agregar solo un producto
             OrderProduct orderProduct = new OrderProduct();
 
